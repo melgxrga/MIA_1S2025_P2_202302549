@@ -3,13 +3,14 @@ package comandos
 import (
 	"bytes"
 	"fmt"
-	"github.com/melgxrga/proyecto1Archivos/consola"
-	"github.com/melgxrga/proyecto1Archivos/functions"
-	"github.com/melgxrga/proyecto1Archivos/structures"
+	"regexp" // Paquete para trabajar con expresiones regulares, útil para encontrar y manipular patrones en cadenas
 	"strconv"
 	"strings"
 	"unsafe"
-	"regexp"  // Paquete para trabajar con expresiones regulares, útil para encontrar y manipular patrones en cadenas
+
+	"github.com/melgxrga/proyecto1Archivos/consola"
+	"github.com/melgxrga/proyecto1Archivos/functions"
+	datos "github.com/melgxrga/proyecto1Archivos/structures"
 )
 
 type ParametrosFdisk struct {
@@ -19,6 +20,7 @@ type ParametrosFdisk struct {
 	Type byte
 	Fit  byte
 	Name [16]byte
+	Add  int
 }
 
 type Fdisk struct {
@@ -43,7 +45,7 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 	args := strings.Join(parametros, " ")
 
 	// Expresión regular para capturar los parámetros
-	re := regexp.MustCompile(`-size=\d+|-unit=[kKmM]|-fit=[bBfFwW]{2}|-path="[^"]+"|-path=[^\s]+|-type=[pPeElL]|-name="[^"]+"|-name=[^\s]+|-delete=[^\s]+`)
+	re := regexp.MustCompile(`-size=\d+|-unit=[kKmM]|-fit=[bBfFwW]{2}|-path="[^"]+"|-path=[^\s]+|-type=[pPeElL]|-name="[^"]+"|-name=[^\s]+|-delete=[^\s]+|-add=-?\d+`)
 	matches := re.FindAllString(args, -1)
 
 	// Iterar sobre cada coincidencia
@@ -79,14 +81,14 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 				fmt.Println("Error: la unidad debe ser B (bytes), K (Kilobytes) o M (Megabytes)")
 				continue
 			}
-			params.Unit = value[0]  // Asignar el primer carácter
+			params.Unit = value[0]
 		case "-fit":
 			value = strings.ToUpper(value)
 			if value != "BF" && value != "FF" && value != "WF" {
 				fmt.Println("Error: el ajuste debe ser BF, FF o WF")
 				continue
 			}
-			params.Fit = value[0]  // Asignar el primer carácter
+			params.Fit = value[0]
 		case "-path":
 			if value == "" {
 				fmt.Println("Error: el path no puede estar vacío")
@@ -99,7 +101,7 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 				fmt.Println("Error: el tipo debe ser P, E o L")
 				continue
 			}
-			params.Type = value[0]  // Asignar el primer carácter
+			params.Type = value[0]
 		case "-name":
 			if value == "" {
 				fmt.Println("Error: el nombre no puede estar vacío")
@@ -107,6 +109,13 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 			}
 			copy(params.Name[:], value)
 			deleteName = value
+		case "-add":
+			addVal, err := strconv.Atoi(value)
+			if err != nil {
+				fmt.Println("Error: el valor de -add debe ser un número entero (positivo o negativo)")
+				continue
+			}
+			params.Add = addVal
 		case "-delete":
 			if value == "" {
 				fmt.Println("Error: El valor de -delete no puede estar vacío")
@@ -117,7 +126,6 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 		}
 	}
 
-	// Si se detectó -delete, solo eliminar y no crear nueva partición
 	if paramsDelete {
 		if params.Path == "" || deleteName == "" {
 			fmt.Println("Error: Debe especificar -path y -name para eliminar una partición.")
@@ -134,7 +142,6 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 			fmt.Printf("Error: No se encontró una partición con el nombre: %s\n", deleteName)
 			return params, true
 		}
-		// Aquí puedes pasar deleteType a EliminarParticion si lo necesitas
 		success := f.EliminarParticion(&master, params.Path, name)
 		if success {
 			fmt.Printf("La partición %s fue eliminada correctamente con método %s.\n", deleteName, deleteType)
@@ -144,7 +151,6 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 		return params, true
 	}
 
-	// Validación final de los parámetros obligatorios
 	if params.Size == 0 {
 		fmt.Println("Error: Falta el parámetro obligatorio -size")
 	}
@@ -154,21 +160,73 @@ func (f *Fdisk) SaveParams(parametros []string) (ParametrosFdisk, bool) {
 
 	// Valores por defecto si no se proporcionaron
 	if params.Unit == 0 {
-		params.Unit = 'M'  // Valor por defecto: Megabytes
+		params.Unit = 'M' // Valor por defecto: Megabytes
 	}
 	if params.Fit == 0 {
-		params.Fit = 'F'   // Valor por defecto: First Fit
+		params.Fit = 'F' // Valor por defecto: First Fit
 	}
 	if params.Type == 0 {
-		params.Type = 'P'  // Valor por defecto: Partición primaria
+		params.Type = 'P' // Valor por defecto: Partición primaria
 	}
 
 	return params, false
 }
 
-
-
 func (f *Fdisk) Fdisk(name [16]byte, path string, size int, unit byte, fit byte, t byte) bool {
+	if f.Params.Add != 0 {
+		master := GetMBR(f.Params.Path)
+		var idx = -1
+		for i, v := range master.Mbr_partitions {
+			if string(v.Part_name[:]) == string(f.Params.Name[:]) && v.Part_status == '1' {
+				idx = i
+				break
+			}
+		}
+		if idx == -1 {
+			consola.AddToConsole(fmt.Sprintf("No se encontró una partición activa con el nombre: %s\n", string(f.Params.Name[:])))
+			return false
+		}
+		consola.AddToConsole("\nEstado de las particiones ANTES de la operación:\n")
+		PrintPartitions(&master)
+		addBytes := f.Params.Add
+		switch f.Params.Unit {
+		case 'b', 'B':
+		case 'k', 'K':
+			addBytes = addBytes * 1024
+		case 'm', 'M', 0:
+			addBytes = addBytes * 1024 * 1024
+		}
+		if addBytes > 0 {
+			endCurrent := master.Mbr_partitions[idx].Part_start + master.Mbr_partitions[idx].Part_size
+			var nextStart int64 = int64(master.Mbr_tamano)
+			for j := idx + 1; j < len(master.Mbr_partitions); j++ {
+				if master.Mbr_partitions[j].Part_status == '1' {
+					nextStart = master.Mbr_partitions[j].Part_start
+					break
+				}
+			}
+			freeSpace := nextStart - endCurrent
+			if endCurrent+int64(addBytes) > nextStart {
+				consola.AddToConsole(fmt.Sprintf("No hay suficiente espacio libre después de la partición para agregar el tamaño solicitado. Espacio libre real: %d bytes (%.2f KB, %.2f MB)\n", freeSpace, float64(freeSpace)/1024.0, float64(freeSpace)/(1024.0*1024.0)))
+				return false
+			}
+			master.Mbr_partitions[idx].Part_size += int64(addBytes)
+		} else if addBytes < 0 {
+			// Quitar espacio: verificar que no quede tamaño negativo o cero
+			if master.Mbr_partitions[idx].Part_size+int64(addBytes) <= 0 {
+				consola.AddToConsole("No se puede quitar más espacio del que tiene la partición\n")
+				return false
+			}
+			master.Mbr_partitions[idx].Part_size += int64(addBytes)
+		}
+		// Reajustar particiones siguientes
+		f.ReajustarParticiones(&master)
+		WriteMBR(&master, f.Params.Path)
+		consola.AddToConsole("\nEstado de las particiones DESPUÉS de la operación:\n")
+		PrintPartitions(&master)
+		consola.AddToConsole(fmt.Sprintf("El tamaño de la partición %s fue actualizado correctamente.\n", string(f.Params.Name[:])))
+		return true
+	}
 	if path == "" {
 		consola.AddToConsole("no se encontro una ruta\n")
 		return false
@@ -176,7 +234,7 @@ func (f *Fdisk) Fdisk(name [16]byte, path string, size int, unit byte, fit byte,
 	master := GetMBR(path)
 	newPartition := datos.Partition{}
 	fileSize := 0
-	
+
 	// Handle unit parameter according to specifications
 	switch {
 	case unit == 'b' || unit == 'B':
@@ -185,8 +243,8 @@ func (f *Fdisk) Fdisk(name [16]byte, path string, size int, unit byte, fit byte,
 		fileSize = size * 1024
 	case unit == 'm' || unit == 'M':
 		fileSize = size * 1024 * 1024
-	case unit == 0: 
-		fileSize = size * 1024 
+	case unit == 0:
+		fileSize = size * 1024
 	default:
 		consola.AddToConsole("Error: unidad no válida. Debe ser B (bytes), K (Kilobytes) o M (Megabytes)\n")
 		return false
@@ -332,6 +390,23 @@ func (f Fdisk) CreateExtendedPartition(master *datos.MBR, newPartition datos.Par
 	copy(temp.Part_name[:], "vacio")
 	WriteEBR(&temp, path, newPartition.Part_start)
 }
+func FirstFit(master *datos.MBR, newPartition *datos.Partition) {
+	firstFit := 0
+	for i, v := range master.Mbr_partitions {
+		if v.Part_status == '5' && v.Part_size >= newPartition.Part_size || v.Part_start == 0 {
+			firstFit = i
+			break
+		}
+	}
+	master.Mbr_partitions[firstFit] = *newPartition
+	if firstFit == 0 {
+		master.Mbr_partitions[firstFit].Part_start = int64(unsafe.Sizeof(datos.MBR{}))
+		newPartition.Part_start = int64(unsafe.Sizeof(datos.MBR{}))
+	} else {
+		master.Mbr_partitions[firstFit].Part_start = master.Mbr_partitions[firstFit-1].Part_start + master.Mbr_partitions[firstFit-1].Part_size
+		newPartition.Part_start = master.Mbr_partitions[firstFit-1].Part_start + master.Mbr_partitions[firstFit-1].Part_size
+	}
+}
 
 func BestFit(master *datos.MBR, newPartition *datos.Partition) {
 	bestFit := 0
@@ -404,23 +479,6 @@ func WorstFit(master *datos.MBR, newPartition *datos.Partition) {
 	}
 }
 
-func FirstFit(master *datos.MBR, newPartition *datos.Partition) {
-	firstFit := 0
-	for i, v := range master.Mbr_partitions {
-		if v.Part_status == '5' && v.Part_size >= newPartition.Part_size || v.Part_start == 0 {
-			firstFit = i
-			break
-		}
-	}
-	master.Mbr_partitions[firstFit] = *newPartition
-	if firstFit == 0 {
-		master.Mbr_partitions[firstFit].Part_start = int64(unsafe.Sizeof(datos.MBR{}))
-		newPartition.Part_start = int64(unsafe.Sizeof(datos.MBR{}))
-	} else {
-		master.Mbr_partitions[firstFit].Part_start = master.Mbr_partitions[firstFit-1].Part_start + master.Mbr_partitions[firstFit-1].Part_size
-		newPartition.Part_start = master.Mbr_partitions[firstFit-1].Part_start + master.Mbr_partitions[firstFit-1].Part_size
-	}
-}
 func (f *Fdisk) EliminarParticionLogica(master *datos.MBR, path string, name [16]byte) bool {
 	// Buscar la partición extendida
 	var foundExtended bool
@@ -458,6 +516,7 @@ func (f *Fdisk) EliminarParticionLogica(master *datos.MBR, path string, name [16
 	master.Mbr_partitions[logicalPartitionIndex].Part_status = '0'
 
 	// Si se elimina la partición lógica, se actualizan las particiones en el disco
+	// (No se reajustan las primarias/extendidas, solo se marca como eliminada la lógica)
 	WriteMBR(master, path)
 	PrintPartitions(master)
 	consola.AddToConsole(fmt.Sprintf("Partición lógica %s eliminada exitosamente\n", string(name[:])))
@@ -493,6 +552,7 @@ func (f *Fdisk) EliminarParticionExtendida(master *datos.MBR, path string, name 
 	master.Mbr_partitions[extendedPartitionIndex].Part_status = '0'
 
 	// Escribir los cambios en el disco
+	f.ReajustarParticiones(master)
 	WriteMBR(master, path)
 	PrintPartitions(master)
 	consola.AddToConsole(fmt.Sprintf("Partición extendida %s y todas sus particiones lógicas eliminadas exitosamente\n", string(name[:])))
@@ -520,11 +580,38 @@ func (f *Fdisk) EliminarParticionPrimaria(master *datos.MBR, path string, name [
 	master.Mbr_partitions[primaryPartitionIndex].Part_status = '0'
 
 	// Escribir los cambios en el disco
+	f.ReajustarParticiones(master)
 	WriteMBR(master, path)
 	PrintPartitions(master)
 	consola.AddToConsole(fmt.Sprintf("Partición primaria %s eliminada exitosamente\n", string(name[:])))
 	return true
 }
+
+func (f *Fdisk) ReajustarParticiones(master *datos.MBR) {
+	// Crear un slice temporal para las particiones activas
+	var activas []datos.Partition
+	for _, part := range master.Mbr_partitions {
+		if part.Part_status == '1' {
+			activas = append(activas, part)
+		}
+	}
+
+	// Limpiar las particiones
+	for i := range master.Mbr_partitions {
+		master.Mbr_partitions[i] = datos.Partition{}
+	}
+
+	// Reasignar las particiones activas, recalculando Part_start
+	for i := range activas {
+		if i == 0 {
+			activas[i].Part_start = int64(unsafe.Sizeof(datos.MBR{}))
+		} else {
+			activas[i].Part_start = activas[i-1].Part_start + activas[i-1].Part_size
+		}
+		master.Mbr_partitions[i] = activas[i]
+	}
+}
+
 func (f *Fdisk) EliminarParticion(master *datos.MBR, path string, name [16]byte) bool {
 	// Verificar si la partición es extendida, primaria o lógica
 	for _, v := range master.Mbr_partitions {
@@ -532,9 +619,9 @@ func (f *Fdisk) EliminarParticion(master *datos.MBR, path string, name [16]byte)
 			switch v.Part_type {
 			case 'e', 'E': // Eliminar partición extendida y lógicas
 				return f.EliminarParticionExtendida(master, path, name)
-			case 'p', 'P': // Eliminar partición primaria
+			case 'p', 'P': // Reajusta las particiones activas tras una eliminación, compactando y recalculando Part_start
 				return f.EliminarParticionPrimaria(master, path, name)
-			case 'l', 'L': // Eliminar partición lógica
+			case 'l', 'L': // Reajusta las particiones activas tras una eliminación, compactando y recalculando Part_start
 				return f.EliminarParticionLogica(master, path, name)
 			}
 		}
