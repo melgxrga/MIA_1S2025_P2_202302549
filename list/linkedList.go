@@ -101,6 +101,8 @@ func (m *MountList) UnMount(key_ string) *MountNode {
 				m.Tamano--
 				return temp
 			}
+			temp = temp.Next      
+			counter++            
 		}
 	}
 	return nil

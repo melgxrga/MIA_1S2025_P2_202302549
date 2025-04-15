@@ -54,6 +54,11 @@ fdisk -type=P -unit=b -name=Part14 -size=10M-path=/home/gabriel-melgar/Calificac
 fdisk -type=P -unit=b -name=PartErr -size=10M-path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco1.mia -fit=BF
 
 
+fdisk -add=1 -unit=M -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco1.mia -name="Part14"
+fdisk -add=-2 -unit=M -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco1.mia -name="Part13"
+fdisk -delete=fast -name="Part14" -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco1.mia
+
+
 #DISCO 3
 # ERROR FALTA ESPACIO
 fdisk -type=P -unit=m -name=PartErr -size=20 -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco3.mia
@@ -101,7 +106,9 @@ mount -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco3.mia -name=Part32
 #DISCO5
 #341C -> 34 sus ultimos dos digitos del carnet
 mount -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco5.mia -name=Part53
-
+#-----------------UNMOUNT-----------------
+#-----------------DESCONEXIONDEPARTICIONES-----------------
+unmount -Disco5149
 #-----------------REPORTESPARTE1-----------------
 #DISCO 1
 #ERROR ID NO ENCONTRADO

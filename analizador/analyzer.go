@@ -92,7 +92,7 @@ func (a *Analyzer) Analyzer(input string) (interface{}, error) {
 			c.Exe(params)
 		case "cat":
 			continue;
-		case "umount":
+		case "unmount":
 			u := comandos.Unmount{}
 			u.Exe(params)
 			
