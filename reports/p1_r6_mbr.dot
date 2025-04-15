@@ -1,0 +1,52 @@
+digraph {
+	node [shape=plaintext]
+	table [label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD bgcolor="purple" COLSPAN="2"> REPORTE MBR</TD></TR>
+			<TR><TD> mbr_tamano </TD><TD>20971520</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> mbr_fecha_creacion </TD><TD bgcolor="#D3D3FA">2025-04-03 10:26:25</TD></TR>
+			<TR><TD> mbr_dsk_signature </TD><TD>59</TD></TR>
+			<TR><TD bgcolor="purple" COLSPAN="2">Partición</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_type </TD><TD bgcolor="#D3D3FA">E</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_start </TD><TD bgcolor="#D3D3FA">208</TD></TR>
+			<TR><TD> part_size </TD><TD>5242880</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_name </TD><TD bgcolor="#D3D3FA">Part51</TD></TR>
+			<TR><TD bgcolor="pink" COLSPAN="2">Particion Logica</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_next </TD><TD bgcolor="#D3D3D3">1048784</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_start </TD><TD bgcolor="#D3D3D3">208</TD></TR>
+			<TR><TD> part_size </TD><TD>1048576</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_name </TD><TD bgcolor="#D3D3D3">Part52</TD></TR>
+			<TR><TD bgcolor="pink" COLSPAN="2">Particion Logica</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_next </TD><TD bgcolor="#D3D3D3">2097360</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_start </TD><TD bgcolor="#D3D3D3">1048784</TD></TR>
+			<TR><TD> part_size </TD><TD>1048576</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_name </TD><TD bgcolor="#D3D3D3">Part54</TD></TR>
+			<TR><TD bgcolor="pink" COLSPAN="2">Particion Logica</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_next </TD><TD bgcolor="#D3D3D3">3145936</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_start </TD><TD bgcolor="#D3D3D3">2097360</TD></TR>
+			<TR><TD> part_size </TD><TD>1048576</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_name </TD><TD bgcolor="#D3D3D3">Part55</TD></TR>
+			<TR><TD bgcolor="pink" COLSPAN="2">Particion Logica</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_start </TD><TD bgcolor="#D3D3D3">3145936</TD></TR>
+			<TR><TD> part_size </TD><TD>1048576</TD></TR>
+			<TR><TD bgcolor="#D3D3D3"> part_name </TD><TD bgcolor="#D3D3D3">Part56</TD></TR>
+			<TR><TD bgcolor="purple" COLSPAN="2">Partición</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_type </TD><TD bgcolor="#D3D3FA">P</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_start </TD><TD bgcolor="#D3D3FA">5243088</TD></TR>
+			<TR><TD> part_size </TD><TD>5242880</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_name </TD><TD bgcolor="#D3D3FA">Part53</TD></TR>
+		</TABLE>
+	>]
+}

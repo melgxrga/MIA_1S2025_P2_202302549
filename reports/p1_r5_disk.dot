@@ -1,0 +1,24 @@
+digraph {
+	node [shape=plaintext]
+	table [label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR>
+			<TD bgcolor="yellow" ROWSPAN="2"><BR/>MBR<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="8">Extendida</TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Primaria<BR/>25%</TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Libre<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Libre<BR/></TD>
+		</TR>
+		<TR>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>EBR<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>Logica<BR/>5%</TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>EBR<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>Logica<BR/>5%</TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>EBR<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>Logica<BR/>5%</TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>EBR<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="1" COLSPAN="1"><BR/>Logica<BR/>5%</TD>
+		</TR>
+		</TABLE>
+	>]
+}

@@ -1,0 +1,19 @@
+digraph G {
+    rankdir=TB;
+    node [shape=record, fontname="Courier New"];
+    
+    /* Bloque de carpeta */
+    BloqueCarpeta [label="{Bloque Carpeta|b_name|b_inodo|.|0|..|0|users.txt|7}"];
+    
+    /* Bloque de archivo (contenido completo) */
+    BloqueArchivo [label="{Bloque Archivo|0123456789012345678901234567890123456789012345678901234567890123
+    7890123456789012345678901234567890123456789012345678901234567890
+    1234567890123456789012345678901234567890123456789012345678901234}"];
+    
+    /* Bloque de apuntadores */
+    BloqueApuntadores [label="{Bloque Apuntadores|10,11,12,13,14,15,16,17,18,19,20,21,22,-1,-1,-1}"];
+    
+    /* Relaciones */
+    BloqueCarpeta -> BloqueArchivo;
+    BloqueArchivo -> BloqueApuntadores;
+}

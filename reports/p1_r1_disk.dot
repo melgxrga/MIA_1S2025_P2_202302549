@@ -1,0 +1,14 @@
+digraph {
+	node [shape=plaintext]
+	table [label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR>
+			<TD bgcolor="yellow" ROWSPAN="2"><BR/>MBR<BR/></TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Primaria<BR/>20%</TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Primaria<BR/>20%</TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Primaria<BR/>20%</TD>
+			<TD bgcolor="green" ROWSPAN="2" COLSPAN="1"><BR/>Primaria<BR/>20%</TD>
+		</TR>
+		</TABLE>
+	>]
+}

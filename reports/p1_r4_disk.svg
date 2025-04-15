@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="276pt" height="586pt" viewBox="0.00 0.00 275.87 586.00">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 582)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-582 271.87,-582 271.87,4 -4,4"/>
+<!-- table -->
+<g id="node1" class="node">
+<title>table</title>
+<polygon fill="purple" stroke="none" points="8,-551.2 8,-574 259.87,-574 259.87,-551.2 8,-551.2"/>
+<polygon fill="none" stroke="black" points="8,-551.2 8,-574 259.87,-574 259.87,-551.2 8,-551.2"/>
+<text text-anchor="start" x="83.76" y="-558.4" font-family="Times,serif" font-size="14.00"> REPORTE MBR</text>
+<polygon fill="none" stroke="black" points="8,-528.4 8,-551.2 135.26,-551.2 135.26,-528.4 8,-528.4"/>
+<text text-anchor="start" x="32.75" y="-535.6" font-family="Times,serif" font-size="14.00"> mbr_tamano </text>
+<polygon fill="none" stroke="black" points="135.26,-528.4 135.26,-551.2 259.87,-551.2 259.87,-528.4 135.26,-528.4"/>
+<text text-anchor="start" x="169.56" y="-535.6" font-family="Times,serif" font-size="14.00">13631488</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-505.6 8,-528.4 135.26,-528.4 135.26,-505.6 8,-505.6"/>
+<polygon fill="none" stroke="black" points="8,-505.6 8,-528.4 135.26,-528.4 135.26,-505.6 8,-505.6"/>
+<text text-anchor="start" x="11" y="-512.8" font-family="Times,serif" font-size="14.00"> mbr_fecha_creacion </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-505.6 135.26,-528.4 259.87,-528.4 259.87,-505.6 135.26,-505.6"/>
+<polygon fill="none" stroke="black" points="135.26,-505.6 135.26,-528.4 259.87,-528.4 259.87,-505.6 135.26,-505.6"/>
+<text text-anchor="start" x="138.26" y="-512.8" font-family="Times,serif" font-size="14.00">2025-04-01 17:37:42</text>
+<polygon fill="none" stroke="black" points="8,-482.8 8,-505.6 135.26,-505.6 135.26,-482.8 8,-482.8"/>
+<text text-anchor="start" x="14.47" y="-490" font-family="Times,serif" font-size="14.00"> mbr_dsk_signature </text>
+<polygon fill="none" stroke="black" points="135.26,-482.8 135.26,-505.6 259.87,-505.6 259.87,-482.8 135.26,-482.8"/>
+<text text-anchor="start" x="187.06" y="-490" font-family="Times,serif" font-size="14.00">138</text>
+<polygon fill="purple" stroke="none" points="8,-460 8,-482.8 259.87,-482.8 259.87,-460 8,-460"/>
+<polygon fill="none" stroke="black" points="8,-460 8,-482.8 259.87,-482.8 259.87,-460 8,-460"/>
+<text text-anchor="start" x="108.66" y="-467.2" font-family="Times,serif" font-size="14.00">Partición</text>
+<polygon fill="none" stroke="black" points="8,-437.2 8,-460 135.26,-460 135.26,-437.2 8,-437.2"/>
+<text text-anchor="start" x="37.8" y="-444.4" font-family="Times,serif" font-size="14.00"> part_status </text>
+<polygon fill="none" stroke="black" points="135.26,-437.2 135.26,-460 259.87,-460 259.87,-437.2 135.26,-437.2"/>
+<text text-anchor="start" x="194.06" y="-444.4" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-414.4 8,-437.2 135.26,-437.2 135.26,-414.4 8,-414.4"/>
+<polygon fill="none" stroke="black" points="8,-414.4 8,-437.2 135.26,-437.2 135.26,-414.4 8,-414.4"/>
+<text text-anchor="start" x="41.7" y="-421.6" font-family="Times,serif" font-size="14.00"> part_type </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-414.4 135.26,-437.2 259.87,-437.2 259.87,-414.4 135.26,-414.4"/>
+<polygon fill="none" stroke="black" points="135.26,-414.4 135.26,-437.2 259.87,-437.2 259.87,-414.4 135.26,-414.4"/>
+<text text-anchor="start" x="193.67" y="-421.6" font-family="Times,serif" font-size="14.00">P</text>
+<polygon fill="none" stroke="black" points="8,-391.6 8,-414.4 135.26,-414.4 135.26,-391.6 8,-391.6"/>
+<text text-anchor="start" x="47.53" y="-398.8" font-family="Times,serif" font-size="14.00"> part_fit </text>
+<polygon fill="none" stroke="black" points="135.26,-391.6 135.26,-414.4 259.87,-414.4 259.87,-391.6 135.26,-391.6"/>
+<text text-anchor="start" x="195.23" y="-398.8" font-family="Times,serif" font-size="14.00">f</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-368.8 8,-391.6 135.26,-391.6 135.26,-368.8 8,-368.8"/>
+<polygon fill="none" stroke="black" points="8,-368.8 8,-391.6 135.26,-391.6 135.26,-368.8 8,-368.8"/>
+<text text-anchor="start" x="41.7" y="-376" font-family="Times,serif" font-size="14.00"> part_start </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-368.8 135.26,-391.6 259.87,-391.6 259.87,-368.8 135.26,-368.8"/>
+<polygon fill="none" stroke="black" points="135.26,-368.8 135.26,-391.6 259.87,-391.6 259.87,-368.8 135.26,-368.8"/>
+<text text-anchor="start" x="187.06" y="-376" font-family="Times,serif" font-size="14.00">208</text>
+<polygon fill="none" stroke="black" points="8,-346 8,-368.8 135.26,-368.8 135.26,-346 8,-346"/>
+<text text-anchor="start" x="42.87" y="-353.2" font-family="Times,serif" font-size="14.00"> part_size </text>
+<polygon fill="none" stroke="black" points="135.26,-346 135.26,-368.8 259.87,-368.8 259.87,-346 135.26,-346"/>
+<text text-anchor="start" x="173.06" y="-353.2" font-family="Times,serif" font-size="14.00">4194304</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-323.2 8,-346 135.26,-346 135.26,-323.2 8,-323.2"/>
+<polygon fill="none" stroke="black" points="8,-323.2 8,-346 135.26,-346 135.26,-323.2 8,-323.2"/>
+<text text-anchor="start" x="38.59" y="-330.4" font-family="Times,serif" font-size="14.00"> part_name </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-323.2 135.26,-346 259.87,-346 259.87,-323.2 135.26,-323.2"/>
+<polygon fill="none" stroke="black" points="135.26,-323.2 135.26,-346 259.87,-346 259.87,-323.2 135.26,-323.2"/>
+<text text-anchor="start" x="179.29" y="-330.4" font-family="Times,serif" font-size="14.00">Part31</text>
+<polygon fill="purple" stroke="none" points="8,-300.4 8,-323.2 259.87,-323.2 259.87,-300.4 8,-300.4"/>
+<polygon fill="none" stroke="black" points="8,-300.4 8,-323.2 259.87,-323.2 259.87,-300.4 8,-300.4"/>
+<text text-anchor="start" x="108.66" y="-307.6" font-family="Times,serif" font-size="14.00">Partición</text>
+<polygon fill="none" stroke="black" points="8,-277.6 8,-300.4 135.26,-300.4 135.26,-277.6 8,-277.6"/>
+<text text-anchor="start" x="37.8" y="-284.8" font-family="Times,serif" font-size="14.00"> part_status </text>
+<polygon fill="none" stroke="black" points="135.26,-277.6 135.26,-300.4 259.87,-300.4 259.87,-277.6 135.26,-277.6"/>
+<text text-anchor="start" x="194.06" y="-284.8" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-254.8 8,-277.6 135.26,-277.6 135.26,-254.8 8,-254.8"/>
+<polygon fill="none" stroke="black" points="8,-254.8 8,-277.6 135.26,-277.6 135.26,-254.8 8,-254.8"/>
+<text text-anchor="start" x="41.7" y="-262" font-family="Times,serif" font-size="14.00"> part_type </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-254.8 135.26,-277.6 259.87,-277.6 259.87,-254.8 135.26,-254.8"/>
+<polygon fill="none" stroke="black" points="135.26,-254.8 135.26,-277.6 259.87,-277.6 259.87,-254.8 135.26,-254.8"/>
+<text text-anchor="start" x="193.67" y="-262" font-family="Times,serif" font-size="14.00">P</text>
+<polygon fill="none" stroke="black" points="8,-232 8,-254.8 135.26,-254.8 135.26,-232 8,-232"/>
+<text text-anchor="start" x="47.53" y="-239.2" font-family="Times,serif" font-size="14.00"> part_fit </text>
+<polygon fill="none" stroke="black" points="135.26,-232 135.26,-254.8 259.87,-254.8 259.87,-232 135.26,-232"/>
+<text text-anchor="start" x="195.23" y="-239.2" font-family="Times,serif" font-size="14.00">f</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-209.2 8,-232 135.26,-232 135.26,-209.2 8,-209.2"/>
+<polygon fill="none" stroke="black" points="8,-209.2 8,-232 135.26,-232 135.26,-209.2 8,-209.2"/>
+<text text-anchor="start" x="41.7" y="-216.4" font-family="Times,serif" font-size="14.00"> part_start </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-209.2 135.26,-232 259.87,-232 259.87,-209.2 135.26,-209.2"/>
+<polygon fill="none" stroke="black" points="135.26,-209.2 135.26,-232 259.87,-232 259.87,-209.2 135.26,-209.2"/>
+<text text-anchor="start" x="173.06" y="-216.4" font-family="Times,serif" font-size="14.00">4194512</text>
+<polygon fill="none" stroke="black" points="8,-186.4 8,-209.2 135.26,-209.2 135.26,-186.4 8,-186.4"/>
+<text text-anchor="start" x="42.87" y="-193.6" font-family="Times,serif" font-size="14.00"> part_size </text>
+<polygon fill="none" stroke="black" points="135.26,-186.4 135.26,-209.2 259.87,-209.2 259.87,-186.4 135.26,-186.4"/>
+<text text-anchor="start" x="173.06" y="-193.6" font-family="Times,serif" font-size="14.00">4194304</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-163.6 8,-186.4 135.26,-186.4 135.26,-163.6 8,-163.6"/>
+<polygon fill="none" stroke="black" points="8,-163.6 8,-186.4 135.26,-186.4 135.26,-163.6 8,-163.6"/>
+<text text-anchor="start" x="38.59" y="-170.8" font-family="Times,serif" font-size="14.00"> part_name </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-163.6 135.26,-186.4 259.87,-186.4 259.87,-163.6 135.26,-163.6"/>
+<polygon fill="none" stroke="black" points="135.26,-163.6 135.26,-186.4 259.87,-186.4 259.87,-163.6 135.26,-163.6"/>
+<text text-anchor="start" x="179.29" y="-170.8" font-family="Times,serif" font-size="14.00">Part32</text>
+<polygon fill="purple" stroke="none" points="8,-140.8 8,-163.6 259.87,-163.6 259.87,-140.8 8,-140.8"/>
+<polygon fill="none" stroke="black" points="8,-140.8 8,-163.6 259.87,-163.6 259.87,-140.8 8,-140.8"/>
+<text text-anchor="start" x="108.66" y="-148" font-family="Times,serif" font-size="14.00">Partición</text>
+<polygon fill="none" stroke="black" points="8,-118 8,-140.8 135.26,-140.8 135.26,-118 8,-118"/>
+<text text-anchor="start" x="37.8" y="-125.2" font-family="Times,serif" font-size="14.00"> part_status </text>
+<polygon fill="none" stroke="black" points="135.26,-118 135.26,-140.8 259.87,-140.8 259.87,-118 135.26,-118"/>
+<text text-anchor="start" x="194.06" y="-125.2" font-family="Times,serif" font-size="14.00">1</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-95.2 8,-118 135.26,-118 135.26,-95.2 8,-95.2"/>
+<polygon fill="none" stroke="black" points="8,-95.2 8,-118 135.26,-118 135.26,-95.2 8,-95.2"/>
+<text text-anchor="start" x="41.7" y="-102.4" font-family="Times,serif" font-size="14.00"> part_type </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-95.2 135.26,-118 259.87,-118 259.87,-95.2 135.26,-95.2"/>
+<polygon fill="none" stroke="black" points="135.26,-95.2 135.26,-118 259.87,-118 259.87,-95.2 135.26,-95.2"/>
+<text text-anchor="start" x="193.67" y="-102.4" font-family="Times,serif" font-size="14.00">P</text>
+<polygon fill="none" stroke="black" points="8,-72.4 8,-95.2 135.26,-95.2 135.26,-72.4 8,-72.4"/>
+<text text-anchor="start" x="47.53" y="-79.6" font-family="Times,serif" font-size="14.00"> part_fit </text>
+<polygon fill="none" stroke="black" points="135.26,-72.4 135.26,-95.2 259.87,-95.2 259.87,-72.4 135.26,-72.4"/>
+<text text-anchor="start" x="195.23" y="-79.6" font-family="Times,serif" font-size="14.00">f</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-49.6 8,-72.4 135.26,-72.4 135.26,-49.6 8,-49.6"/>
+<polygon fill="none" stroke="black" points="8,-49.6 8,-72.4 135.26,-72.4 135.26,-49.6 8,-49.6"/>
+<text text-anchor="start" x="41.7" y="-56.8" font-family="Times,serif" font-size="14.00"> part_start </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-49.6 135.26,-72.4 259.87,-72.4 259.87,-49.6 135.26,-49.6"/>
+<polygon fill="none" stroke="black" points="135.26,-49.6 135.26,-72.4 259.87,-72.4 259.87,-49.6 135.26,-49.6"/>
+<text text-anchor="start" x="173.06" y="-56.8" font-family="Times,serif" font-size="14.00">8388816</text>
+<polygon fill="none" stroke="black" points="8,-26.8 8,-49.6 135.26,-49.6 135.26,-26.8 8,-26.8"/>
+<text text-anchor="start" x="42.87" y="-34" font-family="Times,serif" font-size="14.00"> part_size </text>
+<polygon fill="none" stroke="black" points="135.26,-26.8 135.26,-49.6 259.87,-49.6 259.87,-26.8 135.26,-26.8"/>
+<text text-anchor="start" x="173.06" y="-34" font-family="Times,serif" font-size="14.00">1048576</text>
+<polygon fill="#d3d3fa" stroke="none" points="8,-4 8,-26.8 135.26,-26.8 135.26,-4 8,-4"/>
+<polygon fill="none" stroke="black" points="8,-4 8,-26.8 135.26,-26.8 135.26,-4 8,-4"/>
+<text text-anchor="start" x="38.59" y="-11.2" font-family="Times,serif" font-size="14.00"> part_name </text>
+<polygon fill="#d3d3fa" stroke="none" points="135.26,-4 135.26,-26.8 259.87,-26.8 259.87,-4 135.26,-4"/>
+<polygon fill="none" stroke="black" points="135.26,-4 135.26,-26.8 259.87,-26.8 259.87,-4 135.26,-4"/>
+<text text-anchor="start" x="179.29" y="-11.2" font-family="Times,serif" font-size="14.00">Part33</text>
+</g>
+</g>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="260pt" height="72pt" viewBox="0.00 0.00 260.06 72.40">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 68.4)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-68.4 256.06,-68.4 256.06,4 -4,4"/>
+<!-- table -->
+<g id="node1" class="node">
+<title>table</title>
+<polygon fill="yellow" stroke="none" points="8,-4 8,-60.4 45.12,-60.4 45.12,-4 8,-4"/>
+<polygon fill="none" stroke="black" points="8,-4 8,-60.4 45.12,-60.4 45.12,-4 8,-4"/>
+<text text-anchor="start" x="11" y="-19.6" font-family="Times,serif" font-size="14.00">MBR</text>
+<polygon fill="green" stroke="none" points="45.12,-4 45.12,-60.4 99.33,-60.4 99.33,-4 45.12,-4"/>
+<polygon fill="none" stroke="black" points="45.12,-4 45.12,-60.4 99.33,-60.4 99.33,-4 45.12,-4"/>
+<text text-anchor="start" x="48.12" y="-28" font-family="Times,serif" font-size="14.00">Primaria</text>
+<text text-anchor="start" x="59.4" y="-11.2" font-family="Times,serif" font-size="14.00">30%</text>
+<polygon fill="green" stroke="none" points="99.33,-4 99.33,-60.4 153.54,-60.4 153.54,-4 99.33,-4"/>
+<polygon fill="none" stroke="black" points="99.33,-4 99.33,-60.4 153.54,-60.4 153.54,-4 99.33,-4"/>
+<text text-anchor="start" x="102.33" y="-28" font-family="Times,serif" font-size="14.00">Primaria</text>
+<text text-anchor="start" x="113.6" y="-11.2" font-family="Times,serif" font-size="14.00">30%</text>
+<polygon fill="green" stroke="none" points="153.54,-4 153.54,-60.4 207.75,-60.4 207.75,-4 153.54,-4"/>
+<polygon fill="none" stroke="black" points="153.54,-4 153.54,-60.4 207.75,-60.4 207.75,-4 153.54,-4"/>
+<text text-anchor="start" x="156.54" y="-28" font-family="Times,serif" font-size="14.00">Primaria</text>
+<text text-anchor="start" x="171.31" y="-11.2" font-family="Times,serif" font-size="14.00">7%</text>
+<polygon fill="green" stroke="none" points="207.75,-4 207.75,-60.4 244.06,-60.4 244.06,-4 207.75,-4"/>
+<polygon fill="none" stroke="black" points="207.75,-4 207.75,-60.4 244.06,-60.4 244.06,-4 207.75,-4"/>
+<text text-anchor="start" x="210.75" y="-19.6" font-family="Times,serif" font-size="14.00">Libre</text>
+</g>
+</g>
+</svg>

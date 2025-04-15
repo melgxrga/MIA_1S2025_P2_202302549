@@ -1,0 +1,139 @@
+digraph {
+	node [shape=plaintext]
+	rankdir=LR
+	tabla0[label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD bgcolor="purple" COLSPAN="2">Inodo 0</TD></TR>
+			<TR><TD> i_uid </TD><TD>1</TD></TR>
+			<TR><TD> i_gid </TD><TD>1</TD></TR>
+			<TR><TD> i_size </TD><TD>0</TD></TR>
+			<TR><TD> i_atime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_ctime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_mtime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_block[1]</TD><TD>0</TD></TR>
+			<TR><TD> i_block[2]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[3]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[4]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[5]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[6]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[7]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[8]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[9]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[10]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[11]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[12]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[13]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[14]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[15]</TD><TD>-1</TD></TR>
+			<TR><TD> i_type </TD><TD>0</TD></TR>
+			<TR><TD> i_perm </TD><TD>664</TD></TR>
+		</TABLE>
+	>]
+	bloque0[label=<
+	<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR><TD bgcolor="purple" COLSPAN="2">Bloque Carpeta 0</TD></TR>
+		<TR><TD> . </TD><TD>0</TD></TR>
+		<TR><TD> .. </TD><TD>0</TD></TR>
+		<TR><TD> users.txt </TD><TD>1</TD></TR>
+		<TR><TD> bin </TD><TD>2</TD></TR>
+	</TABLE>
+	>]
+tabla0->bloque0	tabla1[label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD bgcolor="purple" COLSPAN="2">Inodo 1</TD></TR>
+			<TR><TD> i_uid </TD><TD>1</TD></TR>
+			<TR><TD> i_gid </TD><TD>1</TD></TR>
+			<TR><TD> i_size </TD><TD>142</TD></TR>
+			<TR><TD> i_atime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_ctime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_mtime </TD><TD>2025-04-03 10:26:26.</TD></TR>
+			<TR><TD> i_block[1]</TD><TD>1</TD></TR>
+			<TR><TD> i_block[2]</TD><TD>2</TD></TR>
+			<TR><TD> i_block[3]</TD><TD>3</TD></TR>
+			<TR><TD> i_block[4]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[5]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[6]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[7]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[8]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[9]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[10]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[11]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[12]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[13]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[14]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[15]</TD><TD>-1</TD></TR>
+			<TR><TD> i_type </TD><TD>1</TD></TR>
+			<TR><TD> i_perm </TD><TD>664</TD></TR>
+		</TABLE>
+	>]
+bloque0->tabla1
+	bloque1[label=<
+	<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR><TD bgcolor="purple" COLSPAN="2">Bloque archivo 1</TD></TR>
+		<TR><TD COLSPAN="2"> 1,G,root
+1,U,root,root,123
+2,G,usuarios
+3,G,adm
+0,G,mail
+5,G,ne </TD></TR>
+	</TABLE>
+	>]
+tabla1->bloque1
+	bloque2[label=<
+	<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR><TD bgcolor="purple" COLSPAN="2">Bloque archivo 2</TD></TR>
+		<TR><TD COLSPAN="2"> ws
+6,G,sys
+2,U,root,usuario1,password
+3,U,usuarios,user1,abc
+0, </TD></TR>
+	</TABLE>
+	>]
+tabla1->bloque2
+	bloque3[label=<
+	<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR><TD bgcolor="purple" COLSPAN="2">Bloque archivo 3</TD></TR>
+		<TR><TD COLSPAN="2"> U,usuarios,user2,abc
+ </TD></TR>
+	</TABLE>
+	>]
+tabla1->bloque3
+	tabla2[label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD bgcolor="purple" COLSPAN="2">Inodo 2</TD></TR>
+			<TR><TD> i_uid </TD><TD>1</TD></TR>
+			<TR><TD> i_gid </TD><TD>1</TD></TR>
+			<TR><TD> i_size </TD><TD>0</TD></TR>
+			<TR><TD> i_atime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_ctime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_mtime </TD><TD>2025-04-03 10:26:26</TD></TR>
+			<TR><TD> i_block[1]</TD><TD>4</TD></TR>
+			<TR><TD> i_block[2]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[3]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[4]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[5]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[6]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[7]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[8]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[9]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[10]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[11]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[12]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[13]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[14]</TD><TD>-1</TD></TR>
+			<TR><TD> i_block[15]</TD><TD>-1</TD></TR>
+			<TR><TD> i_type </TD><TD>0</TD></TR>
+			<TR><TD> i_perm </TD><TD>664</TD></TR>
+		</TABLE>
+	>]
+bloque0->tabla2
+	bloque4[label=<
+	<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+		<TR><TD bgcolor="purple" COLSPAN="2">Bloque Carpeta 4</TD></TR>
+		<TR><TD> . </TD><TD>2</TD></TR>
+		<TR><TD> .. </TD><TD>0</TD></TR>
+		<TR><TD>  </TD><TD>-1</TD></TR>
+		<TR><TD>  </TD><TD>-1</TD></TR>
+	</TABLE>
+	>]
+tabla2->bloque4}

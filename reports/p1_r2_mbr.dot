@@ -1,0 +1,39 @@
+digraph {
+	node [shape=plaintext]
+	table [label=<
+		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
+			<TR><TD bgcolor="purple" COLSPAN="2"> REPORTE MBR</TD></TR>
+			<TR><TD> mbr_tamano </TD><TD>52428800</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> mbr_fecha_creacion </TD><TD bgcolor="#D3D3FA">2025-04-03 10:26:23</TD></TR>
+			<TR><TD> mbr_dsk_signature </TD><TD>110</TD></TR>
+			<TR><TD bgcolor="purple" COLSPAN="2">Partición</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_type </TD><TD bgcolor="#D3D3FA">P</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_start </TD><TD bgcolor="#D3D3FA">208</TD></TR>
+			<TR><TD> part_size </TD><TD>10485760</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_name </TD><TD bgcolor="#D3D3FA">Part11</TD></TR>
+			<TR><TD bgcolor="purple" COLSPAN="2">Partición</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_type </TD><TD bgcolor="#D3D3FA">P</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_start </TD><TD bgcolor="#D3D3FA">10485968</TD></TR>
+			<TR><TD> part_size </TD><TD>10485760</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_name </TD><TD bgcolor="#D3D3FA">Part12</TD></TR>
+			<TR><TD bgcolor="purple" COLSPAN="2">Partición</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_type </TD><TD bgcolor="#D3D3FA">P</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_start </TD><TD bgcolor="#D3D3FA">20971728</TD></TR>
+			<TR><TD> part_size </TD><TD>10485760</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_name </TD><TD bgcolor="#D3D3FA">Part13</TD></TR>
+			<TR><TD bgcolor="purple" COLSPAN="2">Partición</TD></TR>
+			<TR><TD> part_status </TD><TD>1</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_type </TD><TD bgcolor="#D3D3FA">P</TD></TR>
+			<TR><TD> part_fit </TD><TD>b</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_start </TD><TD bgcolor="#D3D3FA">31457488</TD></TR>
+			<TR><TD> part_size </TD><TD>10485760</TD></TR>
+			<TR><TD bgcolor="#D3D3FA"> part_name </TD><TD bgcolor="#D3D3FA">Part14</TD></TR>
+		</TABLE>
+	>]
+}
