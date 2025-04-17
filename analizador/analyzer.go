@@ -101,7 +101,15 @@ func (a *Analyzer) Analyzer(input string) (interface{}, error) {
 		case "edit":
 			e := usuariosygrupos.Edit{}
 			e.Exe(params)
-	
+			
+		case "rename":
+			r := usuariosygrupos.Rename{}
+			r.Exe(params)
+			
+		case "copy":
+			c := usuariosygrupos.Copy{}
+			c.Exe(params)
+			
 		default:
 			command = strings.TrimSpace(command) // Limpiar espacios y saltos de línea
 			if strings.HasPrefix(command, "#") {

@@ -121,6 +121,7 @@ login -user=root -pass=123 -id=Disco1149
 #-----------------14.MKFILE-----------------
 mkfile -path=/home/gabriel-melgar/Documentos/Tarea.txt -size=75
 mkfile -path=/home/gabriel-melgar/Documentos/Tarea2.txt -size=768
+mkfile -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P2_202302549/Tarea10.txt -size=458
 
 
 
@@ -128,3 +129,10 @@ mkfile -path=/home/gabriel-melgar/Documentos/Tarea2.txt -size=768
 
 edit -path=/home/gabriel-melgar/Documentos/Tarea2.txt -contenido=/home/gabriel-melgar/Documentos/Tarea.txt
 
+
+#-----------------17.RENAME-----------------
+
+rename -path=/home/gabriel-melgar/Documentos/Tarea.txt -name=Tarea3.txt
+
+#-----------------18.COPY-----------------
+copy -path=/home/gabriel-melgar/Documentos -destino=/home/gabriel-melgar/Escritorio/MIA_1S2025_P2_202302549
