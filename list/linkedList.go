@@ -73,6 +73,21 @@ func (m *MountList) Mount(path string, digit int, part *datos.Partition, partL *
 	// deberia crear un m.PrintId o guardar en un singleton la consola
 	m.GetId(newNode)
 }
+// GetNodeByPath busca el nodo de montaje cuyo path es prefijo del path solicitado (y de mayor longitud)
+func (m *MountList) GetNodeByPath(absPath string) *MountNode {
+	var best *MountNode
+	maxLen := -1
+	temp := m.First
+	for temp != nil {
+		if strings.HasPrefix(absPath, temp.Ruta) && len(temp.Ruta) > maxLen {
+			best = temp
+			maxLen = len(temp.Ruta)
+		}
+		temp = temp.Next
+	}
+	return best
+}
+
 // GetAllMountNodes devuelve todos los nodos de la lista de montajes
 func (m *MountList) GetAllMountNodes() []*MountNode {
 	var nodes []*MountNode

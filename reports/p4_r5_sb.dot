@@ -3,22 +3,22 @@ digraph {
 	table [label=<
 		<TABLE BORDER="0" CELLBORDER="1" CELLSPACING="0">
 			<TR><TD bgcolor="#1ECB23" COLSPAN="2"> Reporte de SUPERBLOQUE </TD></TR>
-			<TR><TD> s_filesystem_type </TD><TD>2</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_inodes_count </TD><TD bgcolor="#85F388">24499</TD></TR>
-			<TR><TD> s_blocks_count </TD><TD>73497</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_free_blocks_count </TD><TD bgcolor="#85F388">73471</TD></TR>
-			<TR><TD> s_free_inodes_count </TD><TD>24488</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_mtime </TD><TD bgcolor="#85F388">2025-04-03 10:26:26</TD></TR>
+			<TR><TD> s_filesystem_type </TD><TD>3</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_inodes_count </TD><TD bgcolor="#85F388">24484</TD></TR>
+			<TR><TD> s_blocks_count </TD><TD>73452</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_free_blocks_count </TD><TD bgcolor="#85F388">73450</TD></TR>
+			<TR><TD> s_free_inodes_count </TD><TD>24482</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_mtime </TD><TD bgcolor="#85F388">2025-04-16 20:43:09</TD></TR>
 			<TR><TD bgcolor="#85F388"> s_mnt_count </TD><TD bgcolor="#85F388">0</TD></TR>
 			<TR><TD bgcolor="#85F388"> s_magic </TD><TD bgcolor="#85F388">0</TD></TR>
 			<TR><TD bgcolor="#85F388"> s_inode_size </TD><TD bgcolor="#85F388">232</TD></TR>
 			<TR><TD bgcolor="#85F388"> s_block_size </TD><TD bgcolor="#85F388">64</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_first_ino </TD><TD bgcolor="#85F388">26</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_first_blo </TD><TD bgcolor="#85F388">26</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_bm_inode_start </TD><TD bgcolor="#85F388">352</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_bm_block_start </TD><TD bgcolor="#85F388">24851</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_inode_start </TD><TD bgcolor="#85F388">98348</TD></TR>
-			<TR><TD bgcolor="#85F388"> s_block_start </TD><TD bgcolor="#85F388">5782116</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_first_ino </TD><TD bgcolor="#85F388">2</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_first_blo </TD><TD bgcolor="#85F388">2</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_bm_inode_start </TD><TD bgcolor="#85F388">6752</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_bm_block_start </TD><TD bgcolor="#85F388">31236</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_inode_start </TD><TD bgcolor="#85F388">104688</TD></TR>
+			<TR><TD bgcolor="#85F388"> s_block_start </TD><TD bgcolor="#85F388">5784976</TD></TR>
 		</TABLE>
 	>]
 }

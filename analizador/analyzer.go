@@ -95,6 +95,9 @@ func (a *Analyzer) Analyzer(input string) (interface{}, error) {
 		case "unmount":
 			u := comandos.Unmount{}
 			u.Exe(params)
+		case "remove":
+			r := usuariosygrupos.Remove{}
+			r.Exe(params)
 			
 	
 		default:

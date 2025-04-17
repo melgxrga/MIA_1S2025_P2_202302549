@@ -109,69 +109,19 @@ mount -path=/home/gabriel-melgar/Calificacion_MIA/Discos/Disco5.mia -name=Part53
 #-----------------UNMOUNT-----------------
 #-----------------DESCONEXIONDEPARTICIONES-----------------
 unmount -Disco5149
-#-----------------REPORTESPARTE1-----------------
-#DISCO 1
-#ERROR ID NO ENCONTRADO
-rep -id=A341 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_rE.jpg -name=mbr
-#REPORTE DISK
-rep -id=Disco1149 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_r1_disk.jpg -name=disk
-#REPORTE MBR 
-rep -id=Disco1149 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_r2_mbr.jpg -name=mbr
-
-
-#DISCO 3
-#ERROR ID NO ENCONTRADO
-rep -id=343B -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_rE_mbr.jpg -name=mbr
-#REPORTE DISK
-rep -id=Disco3149 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_r3_disk.jpg -name=disk
-#REPORTE MBR
-rep -id=Disco3249 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_r4_disk.jpg -name=mbr
-
-
-#DISCO 5
-#ERROR ID NO ENCONTRADO
-rep -id=IDx -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_rE_mbr.jpg -name=mbr
-#REPORTE DISK
-rep -id=Disco5149 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_r5_disk.jpg -name=disk
-#REPORTE MBR
-rep -id=Disco5149 -Path=/home/gabriel-melgar/Calificacion_MIA/Reportes/p1_r6_mbr.jpg -name=mbr
-
 
 #-----------------5.MKFS-----------------
-mkfs -type=full -id=Disco1149
+mkfs -type=full -id=Disco1149 -fs=3fs
 
-
-#-----------------PARTE3-----------------
-
-
+rep -id=Disco1149 -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P2_202302549/reports/p4_r5_sb.jpg" -name=sb
 #-----------------7.LOGIN-----------------
 login -user=root -pass=123 -id=Disco1149
-#ERROR SESION INICIADA
-login -user=root -pass=123 -id=Disco1149
 
 
-#-----------------9.MKGRP-----------------
-mkgrp -name=usuarios
-mkgrp -name=adm
-mkgrp -name=mail
-mkgrp -name=news
-mkgrp -name=sys
-#ERROR YA EXISTE EL GRUPO
-mkgrp -name=sys
+#-----------------14.MKFILE-----------------
+mkfile -path=/home/gabriel-melgar/Documentos/Tarea.txt -size=75
+mkfile -path=/home/gabriel-melgar/Documentos/Tarea2.txt -size=768
 
+#-----------------15.RM-----------------
+remove -path=/home/gabriel-melgar/Documentos/Tarea.txt
 
-
-#-----------------14. MKFILE-----------------
-mkfile -path=/home/archivos/user/docs/Tarea.txt -size=75
-mkfile -path=/home/archivos/user/docs/Tarea2.txt -size=768
-
-
-#Para este comando hay que crear un archivo en la computadora y en cont poner su primer nombre
-#Crear un archivo txt en su Escritorio llamado NAME
-
-
-# Cambiar la ruta del cont por la del archivo NAME.txt que creo
-mkfile -path=/home/archivos/user/docs/Tarea3.txt -size=10 -cont=/home/gabriel-melgar/Calificacion_MIA/CONT/Gabriel.txt
-
-
-rep  -path="/home/gabriel-melgar/Calificacion_MIA/Reportes/p4_r2_block.jpg" -name=block

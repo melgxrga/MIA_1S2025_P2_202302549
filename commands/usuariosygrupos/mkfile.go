@@ -99,23 +99,33 @@ func (m *Mkfile) Exe(parametros []string) {
 
 	fmt.Println("Depuración: Parámetros guardados ->", m.Params)
 
-	if creado := m.Mkfile(m.Params.Path, m.Params.R, m.Params.Size, m.Params.Cont); creado {
-		if _, err := os.Stat(m.Params.Path); os.IsNotExist(err) {
-			consola.AddToConsole(fmt.Sprintf("\nERROR: El archivo %s no se creó correctamente\n\n", m.Params.Path))
+	creado, contenido := m.Mkfile(m.Params.Path, m.Params.R, m.Params.Size, m.Params.Cont)
+	if creado {
+		// Crear archivo real en el sistema operativo
+		f, err := os.Create(m.Params.Path)
+		if err != nil {
+			consola.AddToConsole(fmt.Sprintf("\nEl archivo virtual se creó, pero no se pudo crear el archivo real: %s\n\n", err))
 		} else {
-			consola.AddToConsole(fmt.Sprintf("\nEl archivo %s se creó correctamente\n\n", m.Params.Path))
+			defer f.Close()
+			_, err = f.WriteString(contenido)
+			if err != nil {
+				consola.AddToConsole(fmt.Sprintf("\nEl archivo virtual se creó, pero falló al escribir el archivo real: %s\n\n", err))
+			} else {
+				consola.AddToConsole(fmt.Sprintf("\nEl archivo %s se creó correctamente (virtual y real)\n\n", m.Params.Path))
+			}
 		}
 	} else {
 		consola.AddToConsole(fmt.Sprintf("\nNo se pudo crear el archivo %s\n\n", m.Params.Path))
 	}
 }
 
-func (m *Mkfile) Mkfile(path string, r bool, size int, cont string) bool {
+// Ahora retorna (bool, string): éxito y contenido generado
+func (m *Mkfile) Mkfile(path string, r bool, size int, cont string) (bool, string) {
 	fmt.Println("Depuración: Iniciando Mkfile con path:", path, "r:", r, "size:", size, "cont:", cont)
 
 	if path == "" {
 		consola.AddToConsole("ERROR: No se especificó una ruta.\n")
-		return false
+		return false, ""
 	}
 
 	path = strings.Replace(path, "/", "", 1)
@@ -123,14 +133,14 @@ func (m *Mkfile) Mkfile(path string, r bool, size int, cont string) bool {
 
 	if !logger.Log.IsLoggedIn() {
 		consola.AddToConsole("ERROR: No hay un usuario logueado para crear archivos.\n")
-		return false
+		return false, ""
 	}
 
 	fmt.Println("Depuración: Usuario logueado ->", logger.Log.GetUserName())
 
 	if size < 0 {
 		consola.AddToConsole("ERROR: El tamaño del archivo no puede ser negativo.\n")
-		return false
+		return false, ""
 	}
 
 	fmt.Println("Depuración: Buscando partición montada...")
@@ -139,21 +149,23 @@ func (m *Mkfile) Mkfile(path string, r bool, size int, cont string) bool {
 
 	if montaje == nil {
 		fmt.Println("Depuración: No se encontró una partición montada.")
-		return false
+		return false, ""
 	}
 
 	if montaje.Value != nil {
 		fmt.Println("Depuración: Partición primaria encontrada en", montaje.Ruta)
-		return createFile(logger.Log.GetUserName(), montaje.Ruta, path, montaje.Value.Part_start, r, size, cont)
+		ok, content := createFile(logger.Log.GetUserName(), montaje.Ruta, path, montaje.Value.Part_start, r, size, cont)
+		return ok, content
 	} else if montaje.ValueL != nil {
 		fmt.Println("Depuración: Partición extendida encontrada en", montaje.Ruta)
-		return createFile(logger.Log.GetUserName(), montaje.Ruta, path, montaje.ValueL.Part_start+int64(unsafe.Sizeof(datos.EBR{})), r, size, cont)
+		ok, content := createFile(logger.Log.GetUserName(), montaje.Ruta, path, montaje.ValueL.Part_start+int64(unsafe.Sizeof(datos.EBR{})), r, size, cont)
+		return ok, content
 	}
 
 	fmt.Println("Depuración: No se pudo determinar la partición.")
-	return false
+	return false, ""
 }
-func createFile(name [10]byte, path, ruta string, whereToStart int64, r bool, size int, cont string) bool {
+func createFile(name [10]byte, path, ruta string, whereToStart int64, r bool, size int, cont string) (bool, string) {
 	fmt.Println("Depuración: Creando archivo en", ruta, "Inicio en:", whereToStart)
 
 	var superbloque datos.SuperBloque
@@ -181,13 +193,15 @@ func createFile(name [10]byte, path, ruta string, whereToStart int64, r bool, si
 	content := ""
 	if cont != "" {
 		fmt.Println("Depuración: Cargando contenido desde", cont)
-		content = getContent(cont)
+		var err error
+		content, err = getContent(cont)
+		if err != nil {
+			consola.AddToConsole(fmt.Sprintf("Error: El archivo especificado en -cont no existe o no se puede leer: %s\n", cont))
+			return false, ""
+		}
 		fmt.Println("Depuración: Contenido obtenido ->", content)
-	}
-
-	fmt.Println("Depuración: Preparando contenido con tamaño", size)
-
-	if size > 0 {
+	} else if size > 0 {
+		fmt.Println("Depuración: Preparando contenido con tamaño", size)
 		for i := len(content); i < size; i++ {
 			content += strconv.Itoa(i % 10)
 		}
@@ -204,7 +218,7 @@ func createFile(name [10]byte, path, ruta string, whereToStart int64, r bool, si
 	fmt.Println("Depuración: Superbloque actualizado correctamente.")
 
 	PrintTree(&tablaInodoRoot, &superbloque, path)
-	return true
+	return true, content
 }
 
 func GetGroupId(contenido, name string) int64 {
@@ -307,31 +321,22 @@ func NewInodeFile(superbloque *datos.SuperBloque, path string, userId, groupId i
 
 
 
-func getContent(cont string) string {
-	// aqui hay que leer el archivo y ejecutarlo
+func getContent(cont string) (string, error) {
 	file, err := os.Open(cont)
 	if err != nil {
-		consola.AddToConsole(fmt.Sprintf("Error al intentar abrir el archivo: %s\n", cont))
-		return ""
+		return "", err
 	}
-
 	defer file.Close()
 
-	// Crear un scanner para luego leer linea por linea el archivo de entrada
 	scanner := bufio.NewScanner(file)
 	content := ""
-	// Leyendo linea por linea
 	for scanner.Scan() {
-		// obteniendo la linea actual
 		content += scanner.Text() + "\n"
 	}
-
-	// comprobar que no hubo error al leer el archivo
 	if err := scanner.Err(); err != nil {
-		consola.AddToConsole(fmt.Sprintf("Error al leer el archivo: %s\n", err))
-		return ""
+		return "", err
 	}
-	return content
+	return content, nil
 }
 
 func llenarTablaDeInodoDeArchivos(tablaInodo *datos.TablaInodo, superbloque *datos.SuperBloque, path, contenido string) {

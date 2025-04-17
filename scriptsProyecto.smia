@@ -163,7 +163,7 @@ mkfile -path="/home/archivos/b1.txt" -size=-45
 
 #------------------------REPORTESPARTE4----------------
 rep -id=Disco1149 -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P1_202302549/reports/p4_r1_inode.jpg" -name=inode
-rep -id=Disco1149 -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P1_202302549/reports/p4_r5_sb.jpg" -name=sb
+rep -id=Disco1149 -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P2_202302549/reports/p4_r5_sb.jpg" -name=sb
 rep -id=Disco1149 -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P1_202302549/reports/p4_r6_file.jpg -path_file_ls=/home/gabriel-melgar/Documentos/Tarea2.txt  -name=file
 rep -id=Disco1149 -path=/home/gabriel-melgar/Escritorio/MIA_1S2025_P1_202302549/reports/p4_r8_tree.png" -name=tree
 

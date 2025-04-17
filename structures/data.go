@@ -80,3 +80,29 @@ type BloqueDeArchivos struct {
 	B_content [64]byte // Array con el contenido del archivo con capacidad de solo 64 bytes
 }
 
+// =========================
+// Journal y Information para EXT3
+// =========================
+// Information: contenido de una entrada de journal
+// Usado para bitácora de operaciones en EXT3
+// Estructura basada en la documentación proporcionada
+// i_operation: operación (char[10])
+// i_path: path (char[32])
+// i_content: contenido (char[64])
+// i_date: fecha (float)
+type Information struct {
+	I_operation [10]byte
+	I_path      [32]byte
+	I_content   [64]byte
+	I_date      float64
+}
+
+// Journal: una entrada de journal
+// j_count: número de journal
+// j_content: información de la acción
+// Tamaño total: int + Information
+// Para calcular el tamaño usa unsafe.Sizeof(datos.Journal{})
+type Journal struct {
+	J_count   int64
+	J_content Information
+}
