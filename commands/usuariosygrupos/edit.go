@@ -5,8 +5,9 @@ import (
 	"os"
 	"io/ioutil"
 	"strings"
-	"MIA_1S2025_P2_202302549/consola"
-	"MIA_1S2025_P2_202302549/logger"
+	"regexp"
+	"github.com/melgxrga/proyecto1Archivos/consola"
+	"github.com/melgxrga/proyecto1Archivos/logger"
 )
 
 type Edit struct {
@@ -16,7 +17,15 @@ type Edit struct {
 	}
 }
 
-func (e *Edit) Exe() {
+func (e *Edit) Exe(params []string) {
+	// Parsear los parámetros recibidos
+	editCmd, err := ParseEditParams(strings.Join(params, " "))
+	if err != nil {
+		consola.AddToConsole(fmt.Sprintf("ERROR: %s\n", err))
+		return
+	}
+	e.Params = editCmd.Params
+
 	if !logger.Log.IsLoggedIn() {
 		consola.AddToConsole("ERROR: Debe estar logueado para editar archivos.\n")
 		return
@@ -49,12 +58,23 @@ func (e *Edit) Exe() {
 // Parseo de parámetros para el comando edit
 func ParseEditParams(paramStr string) (Edit, error) {
 	var edit Edit
-	params := strings.Fields(paramStr)
-	for _, param := range params {
-		if strings.HasPrefix(param, "-path=") {
-			edit.Params.Path = strings.TrimPrefix(param, "-path=")
-		} else if strings.HasPrefix(param, "-contenido=") {
-			edit.Params.Contenido = strings.TrimPrefix(param, "-contenido=")
+	args := paramStr
+	// Permite -path="valor con espacios" o -path=valor
+	re := regexp.MustCompile(`-path="[^"]+"|-path=[^\s]+|-contenido="[^"]+"|-contenido=[^\s]+`)
+	matches := re.FindAllString(args, -1)
+	for _, match := range matches {
+		kv := strings.SplitN(match, "=", 2)
+		if len(kv) != 2 {
+			continue
+		}
+		key, value := strings.ToLower(kv[0]), kv[1]
+		if strings.HasPrefix(value, "\"") && strings.HasSuffix(value, "\"") {
+			value = strings.Trim(value, "\"")
+		}
+		if key == "-path" {
+			edit.Params.Path = value
+		} else if key == "-contenido" {
+			edit.Params.Contenido = value
 		}
 	}
 	if edit.Params.Path == "" || edit.Params.Contenido == "" {

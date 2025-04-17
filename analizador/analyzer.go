@@ -5,7 +5,6 @@ import (
 
 	"os"
 	"strings"
-	
 	"github.com/melgxrga/proyecto1Archivos/commands"
 	"github.com/melgxrga/proyecto1Archivos/commands/usuariosygrupos"
 	"github.com/melgxrga/proyecto1Archivos/consola"
@@ -99,6 +98,9 @@ func (a *Analyzer) Analyzer(input string) (interface{}, error) {
 			r := usuariosygrupos.Remove{}
 			r.Exe(params)
 			
+		case "edit":
+			e := usuariosygrupos.Edit{}
+			e.Exe(params)
 	
 		default:
 			command = strings.TrimSpace(command) // Limpiar espacios y saltos de línea

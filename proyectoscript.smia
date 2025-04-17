@@ -122,6 +122,9 @@ login -user=root -pass=123 -id=Disco1149
 mkfile -path=/home/gabriel-melgar/Documentos/Tarea.txt -size=75
 mkfile -path=/home/gabriel-melgar/Documentos/Tarea2.txt -size=768
 
-#-----------------15.RM-----------------
-remove -path=/home/gabriel-melgar/Documentos/Tarea.txt
+
+
+#-----------------16.EDIT-----------------
+
+edit -path=/home/gabriel-melgar/Documentos/Tarea2.txt -contenido=/home/gabriel-melgar/Documentos/Tarea.txt
 
