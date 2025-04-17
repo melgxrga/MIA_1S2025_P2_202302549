@@ -110,6 +110,10 @@ func (a *Analyzer) Analyzer(input string) (interface{}, error) {
 			c := usuariosygrupos.Copy{}
 			c.Exe(params)
 			
+		case "move":
+			m := usuariosygrupos.Move{}
+			m.Exe(params)
+			
 		default:
 			command = strings.TrimSpace(command) // Limpiar espacios y saltos de línea
 			if strings.HasPrefix(command, "#") {

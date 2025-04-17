@@ -136,3 +136,10 @@ rename -path=/home/gabriel-melgar/Documentos/Tarea.txt -name=Tarea3.txt
 
 #-----------------18.COPY-----------------
 copy -path=/home/gabriel-melgar/Documentos -destino=/home/gabriel-melgar/Escritorio/MIA_1S2025_P2_202302549
+
+
+#-----------------19.MOVE-----------------
+
+move -path=/home/gabriel-melgar/Documentos/Tarea3.txt -destino=/home/gabriel-melgar/Escritorio/MIA_1S2025_P2_202302549
+
+
