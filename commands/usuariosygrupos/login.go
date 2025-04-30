@@ -142,9 +142,23 @@ func (l *Login) LoginInPrimaryPartition(path string, User [10]byte, Pwd [10]byte
 		grupo := parametros[2]
 		username := parametros[3]
 		password := parametros[4]
-		if !(string(functions.TrimArray(User[:])) == string(functions.TrimArray([]byte(username)))) || !(string(functions.TrimArray(Pwd[:])) == string(functions.TrimArray([]byte(password[:])))) {
+		// Depuración detallada de login
+		fmt.Printf("[LOGIN DEBUG] ---\n")
+		fmt.Printf("[LOGIN DEBUG] username (archivo crudo): '%v'\n", username)
+		fmt.Printf("[LOGIN DEBUG] password (archivo crudo): '%v'\n", password)
+		fmt.Printf("[LOGIN DEBUG] User recibido (array): '%v'\n", User)
+		fmt.Printf("[LOGIN DEBUG] Pwd recibido (array): '%v'\n", Pwd)
+		usrInput := strings.TrimSpace(string(functions.TrimArray(User[:])))
+		usrFile := strings.TrimSpace(strings.ReplaceAll(username, "\x00", ""))
+		pwdInput := strings.TrimSpace(string(functions.TrimArray(Pwd[:])))
+		pwdFile := strings.TrimSpace(strings.ReplaceAll(password, "\x00", ""))
+		fmt.Printf("[LOGIN DEBUG] usrInput: '%s' | usrFile: '%s'\n", usrInput, usrFile)
+		fmt.Printf("[LOGIN DEBUG] pwdInput: '%s' | pwdFile: '%s'\n", pwdInput, pwdFile)
+		if usrInput != usrFile || pwdInput != pwdFile {
+			fmt.Printf("[LOGIN DEBUG] No coincide usuario o contraseña en esta línea.\n")
 			continue
 		}
+		fmt.Printf("[LOGIN DEBUG] Coincidencia encontrada. Procediendo con login...\n")
 		user := &logger.User{
 			User: User,
 			Pass: Pwd,

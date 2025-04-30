@@ -7,6 +7,7 @@ import (
 	commands "github.com/melgxrga/proyecto1Archivos/commands"
 	analyzer "github.com/melgxrga/proyecto1Archivos/analizador"
 	"github.com/melgxrga/proyecto1Archivos/consola"
+	"github.com/melgxrga/proyecto1Archivos/commands/usuariosygrupos"
 	"net/http"
 	"io/ioutil"
 	"strings"
@@ -99,8 +100,7 @@ func main() {
 		c.JSON(http.StatusOK, partitions)
 	})
 
-	// Endpoint para obtener información de discos .smia en una carpeta
-	// GET /disks?folder=<ruta>
+
 	router.GET("/disks", func(c *gin.Context) {
 		folder := c.Query("folder")
 		if folder == "" {
@@ -162,6 +162,106 @@ func main() {
 		}
 		c.JSON(http.StatusOK, disks)
 	})
+
+	// Endpoint de login real conectado a la lógica de usuarios y particiones
+	router.POST("/api/login", func(c *gin.Context) {
+		var req struct {
+			Id   string `json:"id"`
+			User string `json:"user"`
+			Pwd  string `json:"pwd"`
+		}
+		if err := c.ShouldBindJSON(&req); err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"success": false, "message": "Petición inválida"})
+			return
+		}
+		var userArr, pwdArr [10]byte
+		copy(userArr[:], req.User)
+		copy(pwdArr[:], req.Pwd)
+		var loginHandler usuariosygrupos.Login
+		ok := loginHandler.Login(userArr, pwdArr, req.Id)
+		if ok {
+			c.JSON(http.StatusOK, gin.H{"success": true, "message": "Login exitoso"})
+		} else {
+			c.JSON(http.StatusUnauthorized, gin.H{"success": false, "message": "Credenciales inválidas o partición no encontrada"})
+		}
+	})
+
+	// Endpoint para explorar archivos y carpetas en una partición
+	/*router.GET("/explorer", func(c *gin.Context) {
+		partitionID := c.Query("partition")
+		path := c.Query("path")
+		if partitionID == "" || path == "" {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Faltan parámetros"})
+			return
+		}
+
+		node := lista.ListaMount.GetNodeById(partitionID)
+		if node == nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "Partición no montada"})
+			return
+		}
+
+		var start int64
+		if node.Value != nil {
+			start = node.Value.Part_start
+		} else if node.ValueL != nil {
+			start = node.ValueL.Part_start + int64(unsafe.Sizeof(datos.EBR{}))
+		}
+		var superbloque datos.SuperBloque
+		comandos.Fread(&superbloque, node.Ruta, start)
+		var rootInodo datos.TablaInodo
+		comandos.Fread(&rootInodo, node.Ruta, superbloque.S_inode_start)
+
+		// Buscar inodo de la ruta
+		numInodo, inodo, esCarpeta, ok := usuariosygrupos.BuscarInodoPorRuta(path, &rootInodo, &superbloque, node.Ruta)
+		if !ok {
+			c.JSON(http.StatusNotFound, gin.H{"error": "Ruta no encontrada"})
+			return
+		}
+
+		// Si es archivo, solo retorna info del archivo
+		if !esCarpeta {
+			entry := map[string]interface{}{
+				"name": path,
+				"type": "file",
+				"permissions": fmt.Sprintf("%03o", inodo.I_perm),
+				"owner": inodo.I_uid,
+				"size": inodo.I_size,
+			}
+			c.JSON(http.StatusOK, []interface{}{entry})
+			return
+		}
+
+		// Si es carpeta, lista su contenido
+		var result []map[string]interface{}
+		for _, ptr := range inodo.I_block {
+			if ptr == -1 {
+				continue
+			}
+			var bloque datos.BloqueDeCarpetas
+			comandos.Fread(&bloque, node.Ruta, superbloque.S_block_start+ptr*superbloque.S_block_size)
+			for _, content := range bloque.B_content {
+				name := strings.Trim(string(content.B_name[:]), "\x00")
+				if name == "" || name == "." || name == ".." || content.B_inodo == -1 {
+					continue
+				}
+				var hijo datos.TablaInodo
+				comandos.Fread(&hijo, node.Ruta, superbloque.S_inode_start+int64(content.B_inodo)*superbloque.S_inode_size)
+				typeStr := "file"
+				if hijo.I_type == 0 {
+					typeStr = "folder"
+				}
+				result = append(result, map[string]interface{}{
+					"name": name,
+					"type": typeStr,
+					"permissions": fmt.Sprintf("%03o", hijo.I_perm),
+					"owner": hijo.I_uid,
+					"size": hijo.I_size,
+				})
+			}
+		}
+		c.JSON(http.StatusOK, result)
+	})*/
 
 	// Iniciar el servidor en el puerto 8080
 	router.Run(":8080")

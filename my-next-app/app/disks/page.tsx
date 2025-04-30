@@ -1,9 +1,42 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 
 const API_URL = "http://localhost:8080";
 
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+
 function Disks() {
+  const router = useRouter();
+  const [hasSession, setHasSession] = useState(true);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const session = localStorage.getItem("mia_session");
+      if (!session) {
+        setHasSession(false);
+      }
+    }
+  }, []);
+
+  if (!hasSession) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen py-2 relative">
+        <button
+          className="absolute top-6 right-8 px-6 py-2 bg-red-600 hover:bg-red-800 text-white font-bold rounded shadow-lg z-50"
+          onClick={() => {
+            localStorage.removeItem('mia_session');
+            router.push('/login');
+          }}
+        >
+          Cerrar Sesión
+        </button>
+        <h2 className="text-2xl font-bold mb-4 text-red-600">Acceso denegado</h2>
+        <p>Debes iniciar sesión para ver el visualizador de archivos.</p>
+        <button className="mt-4 px-4 py-2 bg-blue-500 hover:bg-blue-700 text-white rounded" onClick={() => router.push("/login")}>Ir a Login</button>
+      </div>
+    );
+  }
   const [folder, setFolder] = useState("");
   const [disks, setDisks] = useState<any[]>([]);
   const [error, setError] = useState("");
@@ -33,7 +66,16 @@ function Disks() {
 
   console.log('DISKS:', disks);
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
+    <div className="flex flex-col items-center justify-center min-h-screen py-2 relative">
+      <button
+        className="absolute top-6 right-8 px-6 py-2 bg-red-600 hover:bg-red-800 text-white font-bold rounded shadow-lg z-50"
+        onClick={() => {
+          localStorage.removeItem('mia_session');
+          router.push('/login');
+        }}
+      >
+        Cerrar Sesión
+      </button>
 
       <h1 className="text-2xl font-bold mb-4">Visualizador de Discos</h1>
       <div className="flex gap-2 mb-4">

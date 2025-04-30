@@ -145,4 +145,6 @@ move -path=/home/gabriel-melgar/Documentos/Tarea3.txt -destino=/home/gabriel-mel
 #-----------------20.CHMOD-----------------
 chmod -path=/home/gabriel-melgar/Documentos -ugo=755
 
+#-----------------21.LOGOUT-----------------
+logout
 
