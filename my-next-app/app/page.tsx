@@ -45,7 +45,7 @@ export default function Home() {
   return (
     <div className='flex flex-col items-center justify-center min-h-screen py-2'>
       <h1 className='text-3xl font-bold mb-4'>Proyecto1 MIA</h1>
-      <input type='file' accept='.glt' onChange={handleFileUpload} className='mb-4' />
+      <input type='file' accept='.smia' onChange={handleFileUpload} className='mb-4' />
 
       <div className='flex flex-row items-center justify-center w-full'>
         <div className='flex flex-col items-center justify-center w-1/2'>

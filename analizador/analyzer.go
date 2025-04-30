@@ -118,6 +118,13 @@ func (a *Analyzer) Analyzer(input string) (interface{}, error) {
 			f := usuariosygrupos.Find{}
 			f.Exe(params)
 			
+		case "chmod":
+			c := usuariosygrupos.Chmod{}
+			c.Exe(params)
+		case "chown":
+			c := usuariosygrupos.Chown{}
+			c.Exe(params)
+			
 		default:
 			command = strings.TrimSpace(command) // Limpiar espacios y saltos de línea
 			if strings.HasPrefix(command, "#") {
